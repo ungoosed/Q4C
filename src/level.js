@@ -88,10 +88,11 @@ export class Level extends Phaser.Scene {
         this.enemyGroup.getChildren().forEach(function (enemy) {
             this.physics.add.collider(enemy, global.walls);
             global.walls.setCollisionBetween(1, 7)
-            enemy.setSize(10, 10)
         }, this)
 
         this.enemyGroup.getChildren().forEach(function (enemy) {
+            enemy.setSize(5, 5)
+
             enemy.anims.create({
                 key: 'attack',
                 frames: enemy.anims.generateFrameNumbers('antibody', { start: 0, end: 16 }),
@@ -126,8 +127,9 @@ export class Level extends Phaser.Scene {
 
                     setTimeout(() => {
 
-                        global.health--
-                    }, 50)
+                        global.health = global.health - 10;
+
+                    }, 10)
 
                 } else {
                     this.physics.moveToObject(enemy, global.player, 150);
@@ -162,7 +164,6 @@ export class Level extends Phaser.Scene {
         }
         if (global.cursors.right.isDown) {
             global.player.setVelocityX(global.speed)
-
 
         }
         if (global.health <= 0) {

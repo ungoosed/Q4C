@@ -1,6 +1,5 @@
 import random from "lodash.random"
-import { Level } from "./level"
-import { Hud } from "./hud"
+
 import titleImage from './assets/images/title.png'
 import startImage from './assets/images/start.png'
 import { Dead } from "./death"
@@ -34,9 +33,7 @@ export class Boot extends Phaser.Scene {
     });
     startButton.on('pointerup', function (event) {
       sceneAlias.stop('boot')
-      sceneAlias.start('level')
-      sceneAlias.start('hud')
-      sceneAlias.bringToTop('hud')
+      sceneAlias.start('before')
     });
 
   }

@@ -1,0 +1,28 @@
+      if (playerY >= 12400) {
+        that.level = 0;
+        that.levelText.setText('Level: Vagina')
+
+      } else if (playerY >= 7474) {
+        that.level = 1;
+        that.levelText.setText('Level: Cervix')
+        if (that.dialogueLevel == 5) {
+          that.dialogueLevel = 6
+        }
+      } else if (playerY >= 905) {
+        that.level = 2;
+        that.levelText.setText('Level: Uterus')
+
+
+        if (that.dialogueLevel == 6) {
+          this.dialogueLevel = 7
+        }
+      } else {
+        that.level = 3;
+        that.levelText.setText('Level: Fallopian Tube')
+
+        if (that.dialogueLevel == 7) {
+          that.dialogueLevel = 8
+
+        }
+      }
+              that.dialogueText.setText('The testes are the starting point of the Sperm\'s adventure. They are encased inside the scrotum to help protect it. The testes are responsible for prducing Sperm and testosterone. If we take closer look into the testes we can see the seminiferous tubules at work producing sperm.')
