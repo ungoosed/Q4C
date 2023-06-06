@@ -48,7 +48,7 @@ preload() {
     this.load.spritesheet('s1', s1, { frameWidth: 150, frameHeight: 177 })
     this.load.spritesheet('s2', s2, { frameWidth: 150, frameHeight: 177 })
     this.load.spritesheet('f1', f1, { frameWidth: 200, frameHeight: 200 })
-    this.load.spritesheet('f2', f2, { frameWidth: 200, frameHeight: 200 })
+    this.load.spritesheet('f2', f2, { frameWidth: 500, frameHeight: 500 })
     this.load.spritesheet('o1', o1, { frameWidth: 1200, frameHeight: 1200 })
     this.load.image('title', titleImage)
     this.load.spritesheet('start', startImage, { frameWidth: 69, frameHeight: 19 })

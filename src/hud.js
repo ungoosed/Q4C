@@ -78,7 +78,7 @@ export class Hud extends Phaser.Scene {
 
     }).setFontSize(20).setDepth(3)
     this.dialogueLevel = 0;
-
+this.registry.set('finish, false')
     this.dialogue.add(this.dialogueText)
     this.dialogue.add(this.yes)
     this.dialogue.add(this.next)
@@ -213,6 +213,7 @@ export class Hud extends Phaser.Scene {
       }
       if (dlevel == 15) {
         that.scene.stop('level')
+        that.registry.set('finish', false)
         that.cameras.main.fadeOut(1000, 0, 0, 0)
         setTimeout(() => {
           that.cameras.main.fadeIn(1000, 0, 0, 0)
@@ -262,7 +263,6 @@ export class Hud extends Phaser.Scene {
       }
       if (dlevel == 21) {
         that.scene.stop('hud')
-        that.scene.add('win', Win)
         that.scene.start('win')
         that.dialogue.setVisible(true);
         that.next.setVisible(false)
@@ -302,7 +302,9 @@ export class Hud extends Phaser.Scene {
     }
     function dialoguePosition(that) {
       const playerY = that.registry.get('playerY');
-
+if (that.registry.get('finish') == true) {
+  that.dialogueLevel = 15
+}
       if (playerY >= 12400) {
         that.level = 0;
         that.levelText.setText('Level: Vagina')
