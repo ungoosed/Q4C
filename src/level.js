@@ -30,18 +30,18 @@ export class Level extends Phaser.Scene {
 
 
     create() {
+        
         console.log(this.registry.get('tube'))
         if (this.registry.get('tube') == 0) {
-            this.egg = this.add.image(3018, 512, 'egg')
+            this.egg = this.physics.add.staticImage(3018, 512, 'egg', )
         } else {
-            this.egg = this.add.image(13157, 610, 'egg')
+            this.egg = this.physics.add.staticImage(13157, 610, 'egg')
 
         }
         this.egg.depth = 10
         this.egg.setScale(0.5)
         global.checkpoint = { x: 7060, y: 20875 };
 
-        global.antibodies = this.physics.add.group();
         global.player = this.physics.add.sprite(global.checkpoint.x, global.checkpoint.y, 'sperm').setScale(3)
         this.map = this.make.tilemap({ key: 'map', tileWidth: 16, tileHeight: 16 })
         const tileset = this.map.addTilesetImage('organ', 'tiles')
@@ -52,7 +52,7 @@ export class Level extends Phaser.Scene {
         global.acid.setDepth(7)
         global.player.setDepth(8);
         global.player.setSize(7, 7);
-
+        
 
         global.cursors = this.input.keyboard.createCursorKeys();
         this.cameras.main.setBounds(0, 0,);
@@ -84,14 +84,17 @@ export class Level extends Phaser.Scene {
         for (let i = 0; i < enemyArray.length; i++) {
             enemyArray[i].setScale(4).setDepth(8)
             this.enemyGroup.add(enemyArray[i])
+            enemyArray[i].body.setSize(10, 10)
         }
+
+
+
         this.enemyGroup.getChildren().forEach(function (enemy) {
             this.physics.add.collider(enemy, global.walls);
             global.walls.setCollisionBetween(1, 7)
         }, this)
 
         this.enemyGroup.getChildren().forEach(function (enemy) {
-            enemy.setSize(5, 5)
 
             enemy.anims.create({
                 key: 'attack',
@@ -106,6 +109,10 @@ export class Level extends Phaser.Scene {
                 repeat: -1
             });
 
+        })
+        this.physics.add.collider(global.player, this.egg, ()=>{
+            this.registry.set('dlevel', 15)
+            console.log(this.registry.get('dlevel'))
         })
 
     }
@@ -124,16 +131,14 @@ export class Level extends Phaser.Scene {
                     enemy.anims.play('attack', true)
 
                     this.physics.moveToObject(enemy, global.player, 300);
-                    global.health = global.health - 30;
 
                     setTimeout(() => {
-                        if (dist <= 40) {
-                            global.health = global.health - 10;
-                        }
-                    }, 100)
+
+                        global.health--
+                    }, 50)
 
                 } else {
-                    this.physics.moveToObject(enemy, global.player, 200);
+                    this.physics.moveToObject(enemy, global.player, 150);
                 }
             }
         }, this)

@@ -11,7 +11,7 @@ const config = {
     default: 'arcade',
     arcade: {
       enableBody: true,
-      debug: true
+      debug: false
     }
   },
   pixelArt: true,
@@ -24,6 +24,5 @@ const config = {
 }
 
 const game = new Phaser.Game(config);
-const global = { speed: 2000, health: 100 }
 
 

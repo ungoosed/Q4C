@@ -39,8 +39,8 @@ export class Before extends Phaser.Scene {
       });
     that.yes.on('pointerup', function (event) {
       that.scene.stop('boot')
-      that.scene.start('level')
       that.scene.start('hud')
+      that.scene.start('level')
       that.scene.bringToTop('thatd')
     });
 
