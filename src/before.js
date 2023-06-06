@@ -1,7 +1,6 @@
 
 import xmark from './assets/images/xmark.png'
 import checkmark from './assets/images/checkmark.png'
-
 export class Before extends Phaser.Scene {
   constructor() {
     super({ key: 'before' })

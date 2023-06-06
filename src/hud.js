@@ -81,6 +81,7 @@ export class Hud extends Phaser.Scene {
     this.yes.on('pointerup', () =>{
       this.dialogueLevel = this.dialogueLevel + 1
       this.dialogue.setVisible(false)
+      this.scene.resume('level')
     })
     
   }
@@ -91,6 +92,7 @@ export class Hud extends Phaser.Scene {
       const dlevel = that.registry.get('dlevel')
       const playerY = that.registry.get('playerY');
       if (dlevel == 0) {
+        that.scene.pause('level')
         that.dialogue.setVisible(true);
         that.yes.setVisible(false)
         that.dialogueText.setText('The testes are the starting point of the Sperm\'s adventure. They are encased inside the scrotum to help protect it. The testes are responsible for prducing Sperm and testosterone. If we take closer look into the testes we can see the seminiferous tubules at work producing sperm.')
@@ -100,6 +102,7 @@ export class Hud extends Phaser.Scene {
         that.next.setVisible(false)
         that.dialogueText.setText('With the help of Testosterone, the Sperm gains the endurance and strength to overcome the obstacles in its journey! After the Sperm is produced they make their way to the epididymis where they develop and mature, waiting until their time has come to begin their epic journey.')
       }
+      
 
     }
     function healthCheck(that) {
