@@ -5,7 +5,7 @@ export class Win extends Phaser.Scene {
     }
 
     create() {
-        this.dialogueText = this.add.text(30, 200, 'Congratulations to all the players who embarked on this epic journey. You have successfully completed The Quest of Conception. Thanks for playing this game!', {
+        this.dialogueText = this.add.text(30, 30, 'Congratulations to all the players who embarked on this epic journey. You have successfully completed The Quest of Conception. Thanks for playing this game!', {
             lineSpacing: 5,
             fontSize: 24,
             fontFamily: 'Mainport',

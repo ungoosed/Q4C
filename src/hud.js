@@ -262,11 +262,14 @@ this.registry.set('finish, false')
 
       }
       if (dlevel == 21) {
-        that.scene.stop('hud')
-        that.scene.start('win')
         that.dialogue.setVisible(true);
         that.next.setVisible(false)
+        
         that.dialogueText.setText('Once the time is right, around 40 weeks after fertilization, birth will take place. The uterus will contract to help push out the fetus. Most often the baby’s head is the first to emerge then followed by the body. As the final moments draw near, a new life is born, ending off the journey through the reproduction system.')
+        that.scene.stop('hud')
+
+        that.scene.start('win')
+
 
       }
 

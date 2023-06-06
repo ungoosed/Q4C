@@ -117,14 +117,11 @@ export class Level extends Phaser.Scene {
             if (dist <= 600) {
                 if (dist <= 50) {
                     enemy.anims.play('attack', true)
-                    this.physics.moveToObject(enemy, global.player, 350);
                     global.health = global.health - 20;
-
-
-                } else {
-                        this.physics.moveToObject(enemy, global.player, 250);
-
+                    
+                    this.physics.moveToObject(enemy, global.player, 350);
                 }
+                
             }
         }, this)
 
