@@ -36,8 +36,10 @@ export class Hud extends Phaser.Scene {
   }
 
   update() {
-    const playerY = this.registry.get('playerY');
-    if (playerY >= 12400) {
+    const that = this
+    function dialogueCheck() {
+      const playerY = that.registry.get('playerY');
+      if (playerY >= 12400) {
       this.level = 0;
       this.levelText.setText('Level: Vagina')
       console.log('0')
