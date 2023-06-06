@@ -96,6 +96,7 @@ export class Level extends Phaser.Scene {
 
         })
         global.that = this;
+        
         this.physics.add.overlap(global.player, this.egg, ()=>{
             global.that.registry.set('finish', true)
             console.log(global.that.registry.get('finish'))
@@ -114,20 +115,15 @@ export class Level extends Phaser.Scene {
         this.enemyGroup.getChildren().forEach(function (enemy) {
             const dist = Phaser.Math.Distance.Between(enemy.x, enemy.y, global.player.x, global.player.y)
             if (dist <= 600) {
-                if (dist <= 30) {
-                    global.health = global.health -1;
+                if (dist <= 50) {
                     enemy.anims.play('attack', true)
+                    this.physics.moveToObject(enemy, global.player, 350);
+                    global.health = global.health - 20;
 
-                    this.physics.moveToObject(enemy, global.player, 500);
-            
-                    setTimeout(() => {
-
-                        global.health--
-                    }, 10)
 
                 } else {
-                    
-                    this.physics.moveToObject(enemy, global.player, 275);
+                        this.physics.moveToObject(enemy, global.player, 250);
+
                 }
             }
         }, this)
