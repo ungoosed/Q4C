@@ -1,12 +1,11 @@
 import overlay from './assets/images/overlay.png'
 import healthBar from './assets/images/health.png'
-import arrow from './assets/images/arrow.png'
 import textBox from './assets/images/text.png'
 import no from './assets/images/xmark.png'
 import yes from './assets/images/checkmark.png'
 import next from './assets/images/next.png'
 import black from './assets/images/black.png'
-
+import { Win } from './win'
 import f1 from './assets/images/f1.png'
 import f2 from './assets/images/f2.png'
 import s1 from './assets/images/s1.png'
@@ -290,6 +289,9 @@ export class Hud extends Phaser.Scene {
 
       }
       if (dlevel == 21) {
+        that.scene.stop('hud')
+        that.scene.add('win', Win)
+        that.scene.start('win')
         that.dialogue.setVisible(true);
         that.next.setVisible(false)
         that.dialogueText.setText('Once the time is right, around 40 weeks after fertilization, birth will take place. The uterus will contract to help push out the fetus. Most often the baby’s head is the first to emerge then followed by the body. As the final moments draw near, a new life is born, ending off the journey through the reproduction system.')
