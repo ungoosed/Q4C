@@ -18,9 +18,9 @@ export class Level extends Phaser.Scene {
         
         console.log(this.registry.get('tube'))
         if (this.registry.get('tube') == 0) {
-            this.egg = this.physics.add.staticImage(3018, 512, 'egg', )
+            this.egg = this.physics.add.sprite(3018, 512, 'egg')
         } else {
-            this.egg = this.physics.add.staticImage(13157, 610, 'egg')
+            this.egg = this.physics.add.sprite(13157, 610, 'egg')
 
         }
         this.egg.depth = 10
@@ -95,7 +95,7 @@ export class Level extends Phaser.Scene {
             });
 
         })
-        this.physics.add.collider(global.player, this.egg, ()=>{
+        this.physics.add.overlap(global.player, this.egg, ()=>{
             this.registry.set('dlevel', 15)
             console.log(this.registry.get('dlevel'))
         })
