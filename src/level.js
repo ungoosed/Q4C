@@ -95,10 +95,11 @@ export class Level extends Phaser.Scene {
             });
 
         })
+        global.that = this;
         this.physics.add.overlap(global.player, this.egg, ()=>{
-            this.registry.set('dlevel', 15)
-            console.log(this.registry.get('dlevel'))
-            this.physics.pause();
+            global.that.registry.set('dlevel', 15)
+            console.log(global.that.registry.get('dlevel'))
+            global.that.physics.pause();
 
         })
 
