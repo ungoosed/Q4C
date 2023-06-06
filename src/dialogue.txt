@@ -26,3 +26,4 @@
         }
       }
               that.dialogueText.setText('The testes are the starting point of the Sperm\'s adventure. They are encased inside the scrotum to help protect it. The testes are responsible for prducing Sperm and testosterone. If we take closer look into the testes we can see the seminiferous tubules at work producing sperm.')
+When these seminal fluids mix together with sperm it creates semen. The sperm is now swimming through the urethra, the final gateway leading out the penis and into the vagina. 

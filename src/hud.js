@@ -90,7 +90,6 @@ export class Hud extends Phaser.Scene {
     this.registry.set('dlevel', this.dialogueLevel)
     function dialogueCheck(that) {
       const dlevel = that.registry.get('dlevel')
-      const playerY = that.registry.get('playerY');
       if (dlevel == 0) {
         that.scene.pause('level')
         that.dialogue.setVisible(true);
@@ -99,9 +98,76 @@ export class Hud extends Phaser.Scene {
       }
       if (dlevel == 1) {
         that.dialogue.setVisible(true);
-        that.next.setVisible(false)
+        that.yes.setVisible(false)
         that.dialogueText.setText('With the help of Testosterone, the Sperm gains the endurance and strength to overcome the obstacles in its journey! After the Sperm is produced they make their way to the epididymis where they develop and mature, waiting until their time has come to begin their epic journey.')
       }
+      if (dlevel == 2) {
+        that.dialogue.setVisible(true);
+        that.yes.setVisible(false)
+        that.dialogueText.setText('It’s that time of the month again, ovulation is happening right now. Ovulation marks the moment when a follicle, located inside the ovaries, grows an immature egg. When the egg has fully developed and mature the follicle will release the egg.')
+      }
+      if (dlevel == 3) {
+        that.dialogue.setVisible(true);
+        that.yes.setVisible(false)
+        var side = that.registry.get('tube')
+        if (side == 0) {
+          side = 'left'
+        } else {
+          side = 'right'
+        }
+        that.dialogueText.setText('The mature egg will make its way outside the ovary and into the fallopian tube where it will patiently wait for the sperm to find it and fertilize it. Remember only one ovary will release an egg every month. This month, the ovary releases on the ' + side + ' side.')
+      }
+      if (dlevel == 4) {
+        that.dialogue.setVisible(true);
+        that.yes.setVisible(false)
+        that.dialogueText.setText('Now that their time is here, the sperm make their way through the vas deferens which guides them through a long path towards their destination. Along the vas deferens, the sperm mixes with seminal fluids from the prostate and seminal vesicle.')
+      }
+      if (dlevel == 5) {
+        that.dialogue.setVisible(true);
+        that.yes.setVisible(false)
+        that.dialogueText.setText('When these seminal fluids mix together with sperm it creates semen. The sperm is now swimming through the urethra, the final gateway leading out the penis and into the vagina. ')
+      }
+      if (dlevel == 6) {
+        that.dialogue.setVisible(true);
+        that.next.setVisible(false)
+        that.dialogueText.setText('Remember, once you’re out there, its time for you to lead the way. Be the first to reach the egg and fertilize it! Don’t let us down, Buddy. We’re counting on you to bring new life into this world!')
+
+      }
+      if (dlevel == 7) {
+        that.scene.pause('level')
+        that.dialogue.setVisible(true);
+        that.next.setVisible(false)
+        that.dialogueText.setText('You are now located in the vagina. The tiny thing you are controlling is called the sperm. Guide the sperm through the intricate twists and turns of the female reproductive system. You’re task right now is to travel up the vagina and into a small opening in the cervix. Be careful though, the female reproductive system is a dangerous place for you tiny sperm.')
+      }
+      if (dlevel == 9) {
+        that.scene.pause('level')
+        that.dialogue.setVisible(true);
+        that.next.setVisible(false)
+        that.dialogueText.setText('Welcome to the cervix. Continue down this narrow path and winding maze to make your way to the uterus. Here you will encounter dangerous white antibodies which will hunt you down mercilessly.')
+        
+      }
+      if (dlevel == 11) {
+        that.scene.pause('level')
+        that.dialogue.setVisible(true);
+        that.next.setVisible(false)
+        that.dialogueText.setText('This large opening leads to the Uterus. Inside the Uterus, it is like a vast area for the sperm. It is your job now to navigate around the Uterus and find a tiny opening in the walls that leads to one of the two fallopian tubes. Good luck, mighty swimmer.')
+        
+      }
+      if (dlevel == 13) {
+        that.scene.pause('level')
+        that.dialogue.setVisible(true);
+        that.next.setVisible(false)
+        that.dialogueText.setText('Congrats! You have discovered one of the entrances to the fallopian tubes.  Swim through the fallopian tube to find the egg. \nHint: If you don\'t see an egg, you might me in the wrong tube. Try looking for the entrance to the other one')
+        
+      }
+      if (dlevel == 15) {
+        that.scene.pause('level')
+        that.dialogue.setVisible(true);
+        that.next.setVisible(false)
+        that.dialogueText.setText('Congrats! You have been successful in being the first to reach the egg and fertilizing it. Your job is now done. Your hard journey is coming to an end. The genetic material in the sperm merges with the egg and initiates the process of fertilization. ')
+        
+      }
+
       
 
     }
@@ -133,6 +199,38 @@ export class Hud extends Phaser.Scene {
         that.healthBar.setFrame(0)
       }
     }
+    function dialoguePosition(that) {
+      const playerY = that.registry.get('playerY');
+
+      if (playerY >= 12400) {
+        that.level = 0;
+        that.levelText.setText('Level: Vagina')
+
+      } else if (playerY >= 7474) {
+        that.level = 1;
+        that.levelText.setText('Level: Cervix')
+        if (that.dialogueLevel == 8) {
+          that.dialogueLevel = 9;
+        }
+      } else if (playerY >= 905) {
+        that.level = 2;
+        that.levelText.setText('Level: Uterus')
+
+
+        if (that.dialogueLevel == 10) {
+          that.dialogueLevel = 11;
+        }
+      } else {
+        that.level = 3;
+        that.levelText.setText('Level: Fallopian Tube')
+
+        if (that.dialogueLevel == 12) {
+          that.dialogueLevel = 13;
+
+        }
+      }
+    }
+    dialoguePosition(this)
     healthCheck(this)
     dialogueCheck(this)
   }
