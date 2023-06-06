@@ -20,9 +20,11 @@ module.exports = {
         use: "raw-loader"
       },
       {
-        test: /\.(gif|png|jpe?g|svg|xml)$/i,
+        test: /\.(gif|png|jpe?g|svg|xml|woff|woff2|eot|ttf)$/i,
         use: "file-loader"
-      }
+      },
+
+
     ]
   },
   plugins: [
