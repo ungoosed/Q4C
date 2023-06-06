@@ -1,37 +1,9 @@
-import overlay from './assets/images/overlay.png'
-import healthBar from './assets/images/health.png'
-import textBox from './assets/images/text.png'
-import no from './assets/images/xmark.png'
-import yes from './assets/images/checkmark.png'
-import next from './assets/images/next.png'
-import black from './assets/images/black.png'
+
 import { Win } from './win'
-import f1 from './assets/images/f1.png'
-import f2 from './assets/images/f2.png'
-import s1 from './assets/images/s1.png'
-import s2 from './assets/images/s2.png'
-import o1 from './assets/images/o1.png'
+
 export class Hud extends Phaser.Scene {
   constructor() {
     super({ key: 'hud' })
-  }
-
-  preload() {
-
-    this.load.spritesheet('s1', s1, { frameWidth: 150, frameHeight: 177 })
-    this.load.spritesheet('s2', s2, { frameWidth: 150, frameHeight: 177 })
-    this.load.spritesheet('f1', f1, { frameWidth: 200, frameHeight: 200 })
-    this.load.spritesheet('f2', f2, { frameWidth: 200, frameHeight: 200 })
-    this.load.spritesheet('o1', o1, { frameWidth: 1200, frameHeight: 1200 })
-    this.load.image('black', black)
-
-    this.load.image('overlay', overlay)
-    this.load.spritesheet('health', healthBar, { frameWidth: 53, frameHeight: 9 })
-    this.load.image('next', next)
-
-    this.load.image('yes', yes)
-    this.load.image('no', no)
-    this.load.image('box', textBox)
   }
 
   create() {

@@ -1,8 +1,3 @@
-import egg from './assets/images/egg.png'
-import map from './assets/maps/sperm.json'
-import tiles from './assets/images/tiles.png'
-import sperm from './assets/images/sperm.png'
-import antibody from './assets/images/white_blood_cell.png'
 
 export class Level extends Phaser.Scene {
     constructor() {
@@ -18,16 +13,6 @@ export class Level extends Phaser.Scene {
         this.scene.start('dead')
         console.log('die')
     }
-
-    preload() {
-        console.log(Phaser.VERSION)
-        this.load.spritesheet('sperm', sperm, { frameWidth: 7, frameHeight: 25 });
-        this.load.spritesheet('antibody', antibody, { frameWidth: 40, frameHeight: 40 });
-        this.load.image('egg', egg);
-        this.load.tilemapTiledJSON('map', map);
-        this.load.image('tiles', tiles);
-    }
-
 
     create() {
         

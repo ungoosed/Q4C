@@ -1,16 +1,7 @@
 import random from "lodash.random"
-
-import titleImage from './assets/images/title.png'
-import startImage from './assets/images/start.png'
-import { Dead } from "./death"
 export class Boot extends Phaser.Scene {
   constructor() {
     super({ key: 'boot' })
-  }
-  preload() {
-    this.load.image('title', titleImage)
-    this.load.spritesheet('start', startImage, { frameWidth: 69, frameHeight: 19 })
-
   }
   create() {
     const sceneAlias = this.scene;

@@ -1,26 +1,10 @@
 
-import xmark from './assets/images/xmark.png'
-import checkmark from './assets/images/checkmark.png'
+
 export class Before extends Phaser.Scene {
   constructor() {
     super({ key: 'before' })
   }
-  preload() {
-    function loadFont(name, url) {
-        var newFont = new FontFace(name, `url(${url})`);
-        newFont.load().then(function (loaded) {
-          document.fonts.add(loaded);
-        }).catch(function (error) {
-          return error;
-        });
-      }
-      loadFont('Mainport', './src/assets/fonts/Mainport.ttf')
-      this.load.image('no', xmark)
-      this.load.image('yes', checkmark)
 
-
-  }
-  
   create() {
     this.no = this.add.image(this.cameras.main.centerX - 128, this.cameras.main.centerY + 200, 'no').setScale(3).setInteractive(this.input.makePixelPerfect())
     this.yes = this.add.image(this.cameras.main.centerX + 64, this.cameras.main.centerY + 200, 'yes').setScale(3).setInteractive(this.input.makePixelPerfect())
