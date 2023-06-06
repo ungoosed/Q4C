@@ -123,7 +123,7 @@ export class Level extends Phaser.Scene {
                     setTimeout(() => {
 
                         global.health--
-                    }, 10)
+                    }, 1000)
 
                 } else {
                     
