@@ -113,7 +113,7 @@ export class Level extends Phaser.Scene {
         const outThis = this;
         this.enemyGroup.getChildren().forEach(function (enemy) {
             const dist = Phaser.Math.Distance.Between(enemy.x, enemy.y, global.player.x, global.player.y)
-            if (dist <= 500) {
+            if (dist <= 600) {
                 if (dist <= 50) {
                     global.health = global.health -1;
                     enemy.anims.play('attack', true)
@@ -127,7 +127,7 @@ export class Level extends Phaser.Scene {
 
                 } else {
                     
-                    this.physics.moveToObject(enemy, global.player, 200);
+                    this.physics.moveToObject(enemy, global.player, 240);
                 }
             }
         }, this)
