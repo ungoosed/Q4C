@@ -57,7 +57,7 @@ export class Level extends Phaser.Scene {
         global.player.anims.create({
             key: 'run',
             frames: this.anims.generateFrameNumbers('sperm', { start: 0, end: 8 }),
-            frameRate: 13,
+            frameRate: 90,
             repeat: -1
         });
 
