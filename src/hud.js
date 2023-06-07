@@ -10,7 +10,7 @@ export class Hud extends Phaser.Scene {
     this.s1 = this.add.sprite(400, 200, 's1').setVisible(false).setDepth(1).setScale(2.2)
     this.s2 = this.add.sprite(400, 200, 's2').setVisible(false).setDepth(1).setScale(2.2)
     this.o1 = this.add.sprite(400, 200, 'o1').setVisible(false).setDepth(1).setScale(0.4)
-    this.s3 = this.add.sprite(400, 200, 's3').setVisible(false).setDepth(1).setScale(0.4)
+    this.s3 = this.add.sprite(400, 300, 's3').setVisible(false).setDepth(1).setScale(15)
 
     this.s3.anims.create({
       key: 's3anim',
@@ -96,8 +96,22 @@ export class Hud extends Phaser.Scene {
     })
     this.yes.on('pointerup', () => {
       if (this.dialogueLevel == 6) {
-        this.s3.anims.play('s3anims', true)
+        this.dialogueLevel = 6.5
         this.cameras.main.fadeOut(1000, 0, 0, 0) 
+        this.dialogue.setVisible(false)
+        this.s1.setVisible(false)
+        this.s2.setVisible(false)
+        this.f1.setVisible(false)
+        this.f2.setVisible(false)
+        this.o1.setVisible(false)
+        this.s3.setVisible(true)
+        this.s3.depth = 100;
+        this.s3.anims.play('s3anim', true)
+        this.cameras.main.fadeIn(1000, 0, 0, 0) 
+        setTimeout(()=>{
+          this.cameras.main.fadeOut(1000, 0, 0, 0) 
+          this.s3.setVisible(false)
+
           setTimeout(() => {
             this.dialogueLevel = 7
             this.dialogue.setVisible(false)
@@ -112,6 +126,8 @@ export class Hud extends Phaser.Scene {
             this.cameras.main.fadeIn(1000, 0, 0, 0)
 
           }, 1000);
+        }, 1000)
+
         
       }
       else {
