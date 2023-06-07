@@ -264,11 +264,17 @@ this.registry.set('finish, false')
       if (dlevel == 21) {
         that.dialogue.setVisible(true);
         that.next.setVisible(false)
-        
         that.dialogueText.setText('Once the time is right, around 40 weeks after fertilization, birth will take place. The uterus will contract to help push out the fetus. Most often the baby’s head is the first to emerge then followed by the body. As the final moments draw near, a new life is born, ending off the journey through the reproduction system.')
-        that.scene.stop('hud')
+      
+      if (dlevel == 22) {
+        that.cameras.main.fadeOut(1000, 0, 0, 0)
+        that.black.setVisible(true)
+        that.dialogue.setVisible(false);
+        that.next.setVisible(false)
+        that.cameras.main.fadeIn(1000, 0, 0, 0)
+        that.add.text(50, 50, 'Congratulations to all the players who embarked on this epic journey. You have successfully completed The Quest of Conception. \n Thanks for playing this game! If you have any Ideas, questions, or Issues that you find with the game, please contact asherc@myvcs.ca or jaydenl3@myvcs.ca')
 
-        that.scene.start('win')
+      }
 
 
       }
