@@ -24,6 +24,7 @@ import sperm from './assets/images/sperm.png'
 import antibody from './assets/images/white_blood_cell.png'
 import xmark from './assets/images/xmark.png'
 import checkmark from './assets/images/checkmark.png'
+import s3 from './assets/images/ejaculate.png'
 export class Load extends Phaser.Scene {
     constructor() {
         super({ key: 'load' })
@@ -50,6 +51,8 @@ preload() {
     this.load.spritesheet('f1', f1, { frameWidth: 200, frameHeight: 200 })
     this.load.spritesheet('f2', f2, { frameWidth: 500, frameHeight: 500 })
     this.load.spritesheet('o1', o1, { frameWidth: 1200, frameHeight: 1200 })
+    this.load.spritesheet('s3', s3, { frameWidth: 32, frameHeight: 32 })
+
     this.load.image('title', titleImage)
     this.load.spritesheet('start', startImage, { frameWidth: 69, frameHeight: 19 })
     

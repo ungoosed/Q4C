@@ -1,6 +1,3 @@
-
-import { Win } from './win'
-
 export class Hud extends Phaser.Scene {
   constructor() {
     super({ key: 'hud' })
@@ -13,7 +10,14 @@ export class Hud extends Phaser.Scene {
     this.s1 = this.add.sprite(400, 200, 's1').setVisible(false).setDepth(1).setScale(2.2)
     this.s2 = this.add.sprite(400, 200, 's2').setVisible(false).setDepth(1).setScale(2.2)
     this.o1 = this.add.sprite(400, 200, 'o1').setVisible(false).setDepth(1).setScale(0.4)
+    this.s3 = this.add.sprite(400, 200, 's3').setVisible(false).setDepth(1).setScale(0.4)
 
+    this.s3.anims.create({
+      key: 's3anim',
+      frames: this.anims.generateFrameNumbers('s3', { start: 0, end: 8 }),
+      frameRate: 20,
+      repeat: -1
+    })
     this.f1.anims.create({
       key: 'f1anim',
       frames: this.anims.generateFrameNumbers('f1', { start: 0, end: 41 }),
@@ -78,7 +82,7 @@ export class Hud extends Phaser.Scene {
 
     }).setFontSize(20).setDepth(3)
     this.dialogueLevel = 0;
-this.registry.set('finish, false')
+    this.registry.set('finish, false')
     this.dialogue.add(this.dialogueText)
     this.dialogue.add(this.yes)
     this.dialogue.add(this.next)
@@ -92,21 +96,26 @@ this.registry.set('finish, false')
     })
     this.yes.on('pointerup', () => {
       if (this.dialogueLevel == 6) {
-        this.cameras.main.fadeOut(1000, 0, 0, 0)
-        setTimeout(() => {
-          this.dialogueLevel = 7
-          this.dialogue.setVisible(false)
-          this.scene.resume('level')
-          this.black.setVisible(false)
-          this.s1.setVisible(false)
-          this.s2.setVisible(false)
-          this.f1.setVisible(false)
-          this.f2.setVisible(false)
-          this.o1.setVisible(false)
-          this.cameras.main.fadeIn(1000, 0, 0, 0)
+        this.s3.anims.play('s3anims', true)
+        this.cameras.main.fadeOut(1000, 0, 0, 0) 
+          setTimeout(() => {
+            this.dialogueLevel = 7
+            this.dialogue.setVisible(false)
+            this.scene.resume('level')
+            this.black.setVisible(false)
+            this.s1.setVisible(false)
+            this.s2.setVisible(false)
+            this.s3.setVisible(false)
 
-        }, 1000);
-      } else {
+            this.f1.setVisible(false)
+            this.f2.setVisible(false)
+            this.o1.setVisible(false)
+            this.cameras.main.fadeIn(1000, 0, 0, 0)
+
+          }, 1000);
+        
+      }
+      else {
         this.dialogueLevel = this.dialogueLevel + 1
         this.dialogue.setVisible(false)
         this.scene.resume('level')
@@ -117,10 +126,8 @@ this.registry.set('finish, false')
         this.f2.setVisible(false)
         this.o1.setVisible(false)
       }
-
-
-
-    })
+    }
+    )
 
   }
 
@@ -265,16 +272,16 @@ this.registry.set('finish, false')
         that.dialogue.setVisible(true);
         that.next.setVisible(false)
         that.dialogueText.setText('Once the time is right, around 40 weeks after fertilization, birth will take place. The uterus will contract to help push out the fetus. Most often the baby’s head is the first to emerge then followed by the body. As the final moments draw near, a new life is born, ending off the journey through the reproduction system.')
-      
-      if (dlevel == 22) {
-        that.cameras.main.fadeOut(1000, 0, 0, 0)
-        that.black.setVisible(true)
-        that.dialogue.setVisible(false);
-        that.next.setVisible(false)
-        that.cameras.main.fadeIn(1000, 0, 0, 0)
-        that.add.text(50, 50, 'Congratulations to all the players who embarked on this epic journey. You have successfully completed The Quest of Conception. \n Thanks for playing this game! If you have any Ideas, questions, or Issues that you find with the game, please contact asherc@myvcs.ca or jaydenl3@myvcs.ca')
 
-      }
+        if (dlevel == 22) {
+          that.cameras.main.fadeOut(1000, 0, 0, 0)
+          that.black.setVisible(true)
+          that.dialogue.setVisible(false);
+          that.next.setVisible(false)
+          that.cameras.main.fadeIn(1000, 0, 0, 0)
+          that.add.text(50, 50, 'Congratulations to all the players who embarked on this epic journey. You have successfully completed The Quest of Conception. \n Thanks for playing this game! If you have any Ideas, questions, or Issues that you find with the game, please contact asherc@myvcs.ca or jaydenl3@myvcs.ca')
+
+        }
 
 
       }
@@ -311,9 +318,9 @@ this.registry.set('finish, false')
     }
     function dialoguePosition(that) {
       const playerY = that.registry.get('playerY');
-if (that.registry.get('finish') == true) {
-  that.dialogueLevel = 15
-}
+      if (that.registry.get('finish') == true) {
+        that.dialogueLevel = 15
+      }
       if (playerY >= 12400) {
         that.level = 0;
         that.levelText.setText('Level: Vagina')
