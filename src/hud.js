@@ -106,7 +106,6 @@ export class Hud extends Phaser.Scene {
             this.s1.setVisible(false)
             this.s2.setVisible(false)
             this.s3.setVisible(false)
-
             this.f1.setVisible(false)
             this.f2.setVisible(false)
             this.o1.setVisible(false)
