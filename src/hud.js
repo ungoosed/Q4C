@@ -331,7 +331,7 @@ export class Hud extends Phaser.Scene {
         if (that.dialogueLevel == 8) {
           that.dialogueLevel = 9;
         }
-      } else if (playerY >= 905) {
+      } else if (playerY >= 1100) {
         that.level = 2;
         that.levelText.setText('Level: Uterus')
 
