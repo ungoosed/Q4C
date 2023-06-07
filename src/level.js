@@ -104,10 +104,6 @@ export class Level extends Phaser.Scene {
             global.that.physics.pause();
 
         })
-        this.physics.add.overlap(global.player, this.enemyGroup, ()=>{
-            global.health = global.health - 10;
-
-        })
 
 
     }
@@ -122,8 +118,15 @@ export class Level extends Phaser.Scene {
             if (dist <= 600) {
                 if (dist <= 50) {
                     enemy.anims.play('attack', true)
-                    global.health = global.health - 20;
                     this.physics.moveToObject(enemy, global.player, 320);
+
+                    setTimeout(()=>{     
+                        if (dist <= 15) {
+                            enemy.anims.play('attack2', true)
+                            this.physics.moveToObject(enemy, global.player, 320);
+                            global.health = global.health - 20;
+                        }              
+                    }, 1000)
                 }
                 this.physics.moveToObject(enemy, global.player, 225);
 
