@@ -126,7 +126,7 @@ export class Level extends Phaser.Scene {
                             this.physics.moveToObject(enemy, global.player, 340);
                             global.health = global.health - 20;
                         }
-                    }, 1000)
+                    }, 500)
                 }
                 this.physics.moveToObject(enemy, global.player, 240);
 
