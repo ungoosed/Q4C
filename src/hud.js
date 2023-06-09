@@ -109,7 +109,7 @@ export class Hud extends Phaser.Scene {
         this.s3.anims.play('s3anim', true)
         this.cameras.main.fadeIn(1000, 0, 0, 0) 
         setTimeout(()=>{
-          this.cameras.main.fadeOut(1000, 0, 0, 0) 
+          this.cameras.main.fadeOut(1000, 255, 255, 255) 
           this.s3.setVisible(false)
 
           setTimeout(() => {
@@ -123,7 +123,7 @@ export class Hud extends Phaser.Scene {
             this.f1.setVisible(false)
             this.f2.setVisible(false)
             this.o1.setVisible(false)
-            this.cameras.main.fadeIn(1000, 0, 0, 0)
+            this.cameras.main.fadeIn(1000, 255, 255, 255)
 
           }, 1000);
         }, 1000)
