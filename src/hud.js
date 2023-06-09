@@ -305,27 +305,27 @@ export class Hud extends Phaser.Scene {
     }
     function healthCheck(that) {
       that.health = that.registry.get('health')
-      if (that.health <= 10) {
+      if (that.health <= that.health/10) {
         that.healthBar.setFrame(9)
-      } else if (that.health <= 20) {
+      } else if (that.health <= 100/10 * 2) {
         that.healthBar.setFrame(8)
 
-      } else if (that.health <= 30) {
+      } else if (that.health <= 100/10 * 3) {
         that.healthBar.setFrame(7)
 
-      } else if (that.health <= 40) {
+      } else if (that.health <= 100/10 * 4) {
         that.healthBar.setFrame(6)
 
-      } else if (that.health <= 50) {
+      } else if (that.health <= 100/10 * 5) {
         that.healthBar.setFrame(5)
 
-      } else if (that.health <= 60) {
+      } else if (that.health <= 100/10 * 6) {
         that.healthBar.setFrame(4)
-      } else if (that.health <= 70) {
+      } else if (that.health <= 100/10 * 7) {
         that.healthBar.setFrame(3)
-      } else if (that.health <= 80) {
+      } else if (that.health <= 100/10 * 8) {
         that.healthBar.setFrame(2)
-      } else if (that.health <= 90) {
+      } else if (that.health <= 100/10 * 9) {
         that.healthBar.setFrame(1)
       } else {
         that.healthBar.setFrame(0)

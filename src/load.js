@@ -3,6 +3,11 @@ import { Hud } from "./hud"
 import { Dead } from "./death"
 import { Boot } from "./boot"
 import { Before } from "./before"
+import hard from './assets/images/no.png'
+import easy from './assets/images/easy.png'
+import medium from './assets/images/medium.png'
+
+
 import titleImage from './assets/images/title.png'
 import startImage from './assets/images/start.png'
 import f1 from './assets/images/f1.png'
@@ -39,6 +44,12 @@ preload() {
         });
       }
       loadFont('Mainport', './src/assets/fonts/Mainport.ttf')
+    this.load.spritesheet('hard', hard, { frameWidth: 69, frameHeight: 19 });
+    this.load.spritesheet('easy', easy, { frameWidth: 69, frameHeight: 19 });
+    this.load.spritesheet('medium', medium, { frameWidth: 69, frameHeight: 19 });
+
+
+
     this.load.image('no', xmark)
     this.load.image('yes', checkmark)
     this.load.spritesheet('sperm', sperm, { frameWidth: 7, frameHeight: 25 });

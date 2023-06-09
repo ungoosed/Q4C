@@ -15,7 +15,9 @@ export class Level extends Phaser.Scene {
     }
 
     create() {
-        
+        if (this.registry.get('difficulty') == 1) {
+            global.health = 1000;
+        }
         console.log(this.registry.get('tube'))
         if (this.registry.get('tube') == 0) {
             this.egg = this.physics.add.sprite(3018, 512, 'egg')
@@ -112,8 +114,27 @@ export class Level extends Phaser.Scene {
     update(time, delta) {
         this.registry.set('playerX', global.player.x)
         this.registry.set('playerY', global.player.y)
-        
-        this.enemyGroup.getChildren().forEach(function (enemy) {
+        if (this.registry.get('difficulty') != 3) {
+            this.enemyGroup.getChildren().forEach(function (enemy) {
+                const dist = Phaser.Math.Distance.Between(enemy.x, enemy.y, global.player.x, global.player.y)
+                if (dist <= 300) {
+                    if (dist <= 50) {
+                        enemy.anims.play('attack', true)
+                        this.physics.moveToObject(enemy, global.player, 320);
+    
+                        setTimeout(()=>{     
+                            if (dist <= 10) {
+                                enemy.anims.play('attack', true)
+                                this.physics.moveToObject(enemy, global.player, 320);
+                                global.health = global.health - 20;
+                            }
+                        }, 1000)
+                    }
+                    this.physics.moveToObject(enemy, global.player, 225);
+    
+                }
+            }, this)        } else {        
+            this.enemyGroup.getChildren().forEach(function (enemy) {
             const dist = Phaser.Math.Distance.Between(enemy.x, enemy.y, global.player.x, global.player.y)
             if (dist <= 400) {
                 if (dist <= 50) {
@@ -133,6 +154,7 @@ export class Level extends Phaser.Scene {
 
             }
         }, this)
+}
 
         var rotationSpeed = 1 * Math.PI;
         if (global.cursors.left.isDown || global.cursors.right.isDown || global.cursors.down.isDown || global.cursors.up.isDown) {
@@ -171,5 +193,4 @@ export class Level extends Phaser.Scene {
 
     }
 }
-
 const global = { speed: 300, health: 100 }
