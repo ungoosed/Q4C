@@ -159,7 +159,7 @@ export class Hud extends Phaser.Scene {
         that.s1.setVisible(true)
         that.s1.anims.play('s1anim', true)
 
-        that.dialogueText.setText('The testes are the starting point of the Sperm\'s adventure. They are encased inside the scrotum to help protect it. The testes are responsible for prducing Sperm and testosterone. If we take closer look into the testes we can see the seminiferous tubules at work producing sperm.')
+        that.dialogueText.setText('The testes are the starting point of the Sperm\'s adventure. They are encased inside the scrotum to help protect it. The testes are responsible for producing Sperm and testosterone. If we take closer look into the testes we can see the seminiferous tubules at work producing sperm.')
       }
       if (dlevel == 1) {
         that.dialogue.setVisible(true);
