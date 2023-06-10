@@ -6,7 +6,7 @@ import { Before } from "./before"
 import hard from './assets/images/no.png'
 import easy from './assets/images/easy.png'
 import medium from './assets/images/medium.png'
-
+import Mainport from './assets/fonts/Mainport.ttf'
 
 import titleImage from './assets/images/title.png'
 import startImage from './assets/images/start.png'
@@ -43,7 +43,7 @@ preload() {
           return error;
         });
       }
-      loadFont('Mainport', './src/assets/fonts/Mainport.ttf')
+      loadFont('Mainport', Mainport)
     this.load.spritesheet('hard', hard, { frameWidth: 69, frameHeight: 19 });
     this.load.spritesheet('easy', easy, { frameWidth: 69, frameHeight: 19 });
     this.load.spritesheet('medium', medium, { frameWidth: 69, frameHeight: 19 });
