@@ -62,7 +62,7 @@ export class Hud extends Phaser.Scene {
     } else {
       this.eggPos = [13157, 610]
     }
-    this.levelText = this.add.text(400, 30, 'Level: Vagina', { fontFamily: 'Mainport' }).setFontSize(20).setDepth(-1)
+    this.levelText = this.add.text(400, 30, 'Level: Vagina', { fontFamily: 'Mainport' }).setFontSize(40).setDepth(-1)
 
     this.level = 0;
 
@@ -75,7 +75,7 @@ export class Hud extends Phaser.Scene {
     this.next = this.add.image(this.cameras.main.width - 50, 540, 'next').setScale(2).setDepth(3).setInteractive()
     this.dialogueText = this.add.text(30, 420, 'if you see this you are bad and should tell kamikid right away', {
       lineSpacing: 5,
-      fontSize: 24,
+      fontSize: 30,
       fontFamily: 'Mainport',
       align: "left",
       wordWrap: { width: 690 }
