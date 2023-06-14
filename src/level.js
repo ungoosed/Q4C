@@ -18,6 +18,10 @@ export class Level extends Phaser.Scene {
         if (this.registry.get('difficulty') == 1) {
             global.health = 1000;
         }
+        if (this.registry.get('difficulty') == 3) {
+            global.health = 50;
+        }
+
         console.log(this.registry.get('tube'))
         if (this.registry.get('tube') == 0) {
             this.egg = this.physics.add.sprite(3018, 512, 'egg')
