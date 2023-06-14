@@ -118,26 +118,26 @@ export class Level extends Phaser.Scene {
     update(time, delta) {
         this.registry.set('playerX', global.player.x)
         this.registry.set('playerY', global.player.y)
-        if (this.registry.get('difficulty') != 3) {
+        if (this.registry.get('difficulty') == 2) {
             this.enemyGroup.getChildren().forEach(function (enemy) {
                 const dist = Phaser.Math.Distance.Between(enemy.x, enemy.y, global.player.x, global.player.y)
                 if (dist <= 300) {
-                    if (dist <= 50) {
+                    if (dist <= 75) {
                         enemy.anims.play('attack', true)
                         this.physics.moveToObject(enemy, global.player, 320);
     
                         setTimeout(()=>{     
-                            if (dist <= 10) {
+                            if (dist <= 30) {
                                 enemy.anims.play('attack', true)
                                 this.physics.moveToObject(enemy, global.player, 320);
                                 global.health = global.health - 20;
                             }
-                        }, 1000)
+                        }, 700)
                     }
                     this.physics.moveToObject(enemy, global.player, 225);
     
                 }
-            }, this)        } else {        
+            }, this)} else if (this.registry.get('difficulty') == 3){        
             this.enemyGroup.getChildren().forEach(function (enemy) {
             const dist = Phaser.Math.Distance.Between(enemy.x, enemy.y, global.player.x, global.player.y)
             if (dist <= 400) {
