@@ -338,7 +338,7 @@ export class Hud extends Phaser.Scene {
       }
       if (playerY >= 12400) {
         that.level = 0;
-        that.levelText.setText('Level: V****a')
+        that.levelText.setText('Level: Vagina')
 
       } else if (playerY >= 7474) {
         that.level = 1;
