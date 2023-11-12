@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "q4c",
     "public": "dist",
     "ignore": [
       "firebase.json",
